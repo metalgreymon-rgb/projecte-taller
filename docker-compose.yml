@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:10.11
+    container_name: taller-db
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: taller
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db_schema.sql:/docker-entrypoint-initdb.d/db_schema.sql
+    networks:
+      - taller_net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-uroot", "-pexample"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build: ./api
+    container_name: taller-api
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - taller_net
+    restart: on-failure
+
+  web:
+    build: ./web
+    container_name: taller-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+    networks:
+      - taller_net
+
+networks:
+  taller_net:
+    driver: bridge
+
+volumes:
+  db_data:
