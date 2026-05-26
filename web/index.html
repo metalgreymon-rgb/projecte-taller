@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Mecànic - Gestió de Cites</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Taller Mecànic</h1>
+        <p>Gestió de cites en línia</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Demana una cita</h2>
+            <form id="citaForm">
+                <div class="form-group">
+                    <label for="client_id">ID del client</label>
+                    <input type="number" id="client_id" placeholder="Ex: 1" required min="1">
+                </div>
+                <div class="form-group">
+                    <label for="vehicle_id">ID del vehicle</label>
+                    <input type="number" id="vehicle_id" placeholder="Ex: 1" required min="1">
+                </div>
+                <div class="form-group">
+                    <label for="data_cita">Data de la cita</label>
+                    <input type="date" id="data_cita" required>
+                </div>
+                <div class="form-group">
+                    <label for="servei_sollicitat">Servei sol·licitat</label>
+                    <input type="text" id="servei_sollicitat" placeholder="Ex: Canvi d'oli" required>
+                </div>
+                <button type="submit">Demanar cita</button>
+            </form>
+            <div id="missatge" class="missatge hidden"></div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <h2>Cites programades</h2>
+                <button id="btnRefrescar" onclick="carregarCites()">↻ Actualitzar</button>
+            </div>
+            <div id="llistatCites">
+                <p class="loading">Carregant cites...</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
