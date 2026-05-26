@@ -1,0 +1,120 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+}
+
+header {
+    background: #3a424e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 { font-size: 2rem; }
+header p  { margin-top: 4px; opacity: 0.85; }
+
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card h2 { margin-bottom: 16px; color: #1a73e8; }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+.card-header h2 { margin-bottom: 0; }
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+}
+
+label { font-size: 0.9rem; font-weight: bold; margin-bottom: 4px; }
+
+input {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+input:focus { outline: none; border-color: #1a73e8; }
+
+button {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover { background: #1558b0; }
+
+#btnRefrescar {
+    background: #f0f2f5;
+    color: #333;
+    font-size: 0.9rem;
+    padding: 6px 14px;
+}
+#btnRefrescar:hover { background: #ddd; }
+
+.missatge {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+.missatge.ok    { background: #d4edda; color: #155724; }
+.missatge.error { background: #f8d7da; color: #721c24; }
+.missatge.hidden { display: none; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+th {
+    background: #1a73e8;
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+}
+
+td { padding: 10px 12px; border-bottom: 1px solid #eee; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f9f9f9; }
+
+.loading { color: #888; font-style: italic; }
+.no-data { color: #888; text-align: center; padding: 20px; }
+
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead { display: none; }
+    td { padding: 6px 10px; }
+    td::before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+    }
+}
